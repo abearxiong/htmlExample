@@ -7,6 +7,10 @@ let getFiles = fs.readdirSync(filesPath)
 getFiles = getFiles.filter(item=>{
     if(item.startsWith("."))return false
     else if(item === "node_modules")return false
+    else if(item.startsWith("000000")){
+        console.log(item, "配置文件,不要")
+        return false
+    }
     return true
 })
 getFiles.forEach(item=>{
@@ -28,6 +32,10 @@ let html =`
         <style>
         .example-list{
             display:block;
+        }
+        body{
+            width: 80%;
+            margin: auto;
         }
         </style>
     </head>
