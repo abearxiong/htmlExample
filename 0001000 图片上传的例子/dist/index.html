@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+
+<!-- Begin styles  -->
+
+  <link rel="stylesheet" href="./styles/main.min.css" type="text/css">
+
+<!-- End styles  -->
+
+  <!-- inject:css -->
+  <!-- endinject -->
+
+  <title>图片上传</title>
+</head>
+
+<body>
+  <div id="develop">
+      <h3>剪贴板图片</h3>
+      <details>
+        <summary>剪贴板图片</summary>
+        复制了图片后，在浏览器中ctrl+v即可，默认在末尾追加一个图片
+      </details>
+      <h3>拖动文件</h3>
+      <details>
+        <summary>原生拖动上传</summary>
+        <blockquote>没有考虑浏览器的兼容性问题。chrome,firfox,edge没问题</blockquote>
+        <div id="drop-upload">
+
+        </div>
+        <div id="drop-preview">
+
+        </div>
+      </details>
+      <details>
+        <summary>JQuery拖动上传（无）</summary>
+        <div id="jquery-drop-upload">
+
+        </div>
+        <div id="jquery-drop-preview">
+
+          </div>
+      </details>
+      <h3>表单上传</h3>
+      <details>
+        <summary>表单上传</summary>
+        <from>
+          <input id="from-drop-upload" type="file" multiple onchange="formPreview(this.files)"/>
+          <div id="from-drop-preview">
+          </div>
+        </from>
+        如果multiple就是可以多文件上传
+      </details>
+
+
+      <h3>非开发内容</h3>
+      <details>
+        <summary>edge不支持details</summary>
+        edge的details和summary不和其他浏览器一样，edge不支持。
+      </details>
+  </div>
+  <!-- Begin scripts -->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+  
+    <script src="./scripts/main.min.js" charset="utf-8"></script>
+  <!-- End Scripts -->
+
+    <!-- inject:js -->
+    <!-- endinject -->
+  <script>
+
+      </script>
+</body>
+
+</html>

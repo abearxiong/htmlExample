@@ -1,17 +1,3 @@
-# htmlExample
-
-不喜欢网上的编辑器，比如codepen，codebox,jsfiddle等等都感觉卡，不是国内服务器的原因吧。国内没有比较好的。
-
-所以就本地开发吧，有一些自己要自己尝试编写的网页的例子。
-
-## 0001000 开头为图片为主
-## gulp的配置问题
-
-之前使用browsesync是放在开发文档进行查看的，然而突然觉得应该放在dist的index看，因为所有的内容处理是在dist，查看的内容就具体的位置是哪里，而开发目录下的东西很乱杂。不然就要一一对应，那样是很麻烦的。
-
-运行方式 在具有`gulpfile.babel.js`的目录下运行`gulp`
-
-```javascript
 // Skip to content
 // Gulp 4 + Browsersync
 //  gulpfile.babel.js
@@ -64,14 +50,15 @@ export function scripts() {
 
 // Process and minify css, copy to dist folder
 export function styles() {
-  return gulp.src(paths.styles.src)
+  return gulp.src(paths.styles.src,{ sourcemaps: true })
     .pipe(less())
     .pipe(cleanCSS())
     // pass in options to the stream
-    .pipe(rename({
-      basename: 'main',
-      suffix: '.min'
-    }))
+    // .pipe(rename({
+    //   basename: 'main',
+    //   suffix: '.min'
+    // }))
+    .pipe(concat('main.min.css'))
     .pipe(gulp.dest(paths.styles.dest));
 }
 
@@ -100,13 +87,19 @@ export function injectCSS(){
     .pipe(gulp.dest(paths.html.dest))
 }
 export function injectJS(){
-  return gulp.src('index.html')
+  return gulp.src(paths.html.src)
     .pipe(inject(
       gulp.src(['src/scripts/**/*.js'])
       ))
-    .pipe(gulp.dest(paths.scripts.dest))
+    .pipe(gulp.dest(paths.html.dest))
 }
-
+export function injectCJ(){
+  return gulp.src(paths.html.src)
+  .pipe(inject(
+    gulp.src(['src/styles/**/*.css','src/scripts/**/*.js'], {read: false})
+    ))
+  .pipe(gulp.dest(paths.html.dest))
+}
 
 /**********    Development    **********/
 
@@ -114,6 +107,7 @@ export function injectJS(){
 export function serve(done) {
   server.init({
     server: {
+      // baseDir: './src'
       baseDir: './dist'
     },
     port: 5000
@@ -135,9 +129,8 @@ export function watch() {
 }
 
 // Build dist folder, start server, and watch files
-const build = gulp.series(clean, gulp.parallel(scripts, styles, html, images),injectCSS, serve, watch);
+// const build = gulp.series(clean, gulp.parallel(scripts, styles, html, images),injectCSS,injectJS, serve, watch);
+const build = gulp.series(clean, gulp.parallel(scripts, styles, html, images), serve, watch);
 
 // Set build as default task
 export default build;
-
-```
