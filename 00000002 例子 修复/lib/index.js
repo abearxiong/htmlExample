@@ -1,0 +1,2 @@
+"use strict";var _require=require("electron"),ipcMain=_require.ipcMain;ipcMain.on("footer",function(e,i){console.log("footer event",e,i)});
+"use strict";ipcMain.on("home",function(o,e){console.log("home event  ",o,e)});

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+
+<!-- Begin styles  -->
+
+  <link rel="stylesheet" href="./styles/main.min.css" type="text/css">
+  <link rel="import" href="./components/test.html" id="xxtest"/>
+<!-- End styles  -->
+
+  <!-- inject:css -->
+  <!-- endinject -->
+  <style type="text/css" media="screen">
+    #box {
+      width: 50%;
+      height: 500px;
+    }
+
+    #editor {
+      width: 100%;
+      height: 100%;
+    }
+    #editor2 {
+      width: 400px;
+      height: 100px
+    }
+    .ace_print-margin {
+      display: none;
+    }
+  </style>
+
+  <title>例子</title>
+</head>
+
+<body>
+  <div id="develop">
+      哈哈哈哈
+  </div>
+  <div id="box">
+    <div id="editor">
+      jav
+    </div>
+    <div id="editorValue">确定</div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <!-- 主要文件 -->
+  <script src="https://cdn.bootcss.com/ace/1.4.6/ace.js"></script>
+  <!-- 用来提供代码提示和自动补全的插件 -->
+  <script src="https://cdn.bootcss.com/ace/1.4.6/ext-language_tools.js"></script>
+  <script>
+    // ace.require("ace/ext/language_tools");
+    // 初始化editor(）
+    var editor = ace.edit("editor");
+    editor.setOptions({
+      // 默认:false
+      wrap: true, // 换行
+      // autoScrollEditorIntoView: false, // 自动滚动编辑器视图
+      enableLiveAutocompletion: true, // 智能补全
+      enableSnippets: true, // 启用代码段
+      enableBasicAutocompletion: true, // 启用基本完成 不推荐使用
+    });
+    // 设置主题  cobalt monokai
+    editor.setTheme("ace/theme/cobalt");
+    // 设置编辑语言
+    editor.getSession().setMode("ace/mode/javascript");
+    editor.setFontSize(12);
+    editor.setReadOnly(false)
+    editor.getSession().setTabSize(2);
+    // 获取编辑内容
+    // var v = editor.getValue();
+    // console.log(v);
+    // 编辑内容搜索  快捷键打开->ctrl+f
+    // editor.execCommand('find');
+    // 设置编辑内容
+    // var editorValue = '<h2>测试数据</h2>';
+    // editor.setValue(editorValue);
+  </script>
+  <br/>
+
+    <div id="editor2">
+23  
+    </div>
+    <div id="cssLoad"></div>
+    <script>
+        var editor2 = ace.edit("editor2");
+    editor2.setOptions({
+      // 默认:false
+      wrap: true, // 换行
+      // autoScrollEditorIntoView: false, // 自动滚动编辑器视图
+      enableLiveAutocompletion: true, // 智能补全
+      enableSnippets: true, // 启用代码段
+      enableBasicAutocompletion: true, // 启用基本完成 不推荐使用
+    });
+    // 设置主题  cobalt monokai
+    editor2.setTheme("ace/theme/cobalt");
+    // 设置编辑语言
+    editor2.getSession().setMode("ace/mode/javascript");
+    editor2.setFontSize(12);
+    editor2.setReadOnly(false)
+    editor2.getSession().setTabSize(2);
+  </script>
+<script>
+ let v = $("#editorValue")
+ v.click(function(){
+   let gv = editor.getValue()
+    console.log(gv)
+    eval(gv)
+    editor2.setValue(gv);
+ })
+//  let cssLoad = $("#cssLoad")
+//  var style = document.createElement('style');
+//     style.type = 'text/css';
+//     style.rel = 'stylesheet';
+//     //for Chrome Firefox Opera Safari
+//     style.appendChild(document.createTextNode('body{background-color:#f00}'));
+// cssLoad.append(style)
+</script>
+  <!-- Begin scripts -->
+
+  
+    <script src="./scripts/main.min.js" charset="utf-8"></script>
+  <!-- End Scripts -->
+
+    <!-- inject:js -->
+    <!-- endinject -->
+
+  <script>
+    let body = $("body")
+    console.log("xxtest倒入", xxtest.import," 类型",typeof xxtest.import)
+    body.append(xxtest.import.body)
+      </script>
+</body>
+
+</html>

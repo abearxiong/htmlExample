@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+
+<!-- Begin styles  -->
+
+  <link rel="stylesheet" href="./styles/main.min.css" type="text/css">
+  <link rel="import" href="./components/footer.html" id="xxfooter"/>
+  <link rel="import" href="./components/header.html" id="xxheader"/>  
+  <link rel="import" href="./components/setting.html" id="xxsetting"/>
+
+<!-- End styles  -->
+
+  <!-- inject:css -->
+  <!-- endinject -->
+
+  <title>图片管理</title>
+</head>
+
+<body>
+  <div id="header"></div>
+  <div id="app">
+    <div class="myiframe" style="width: 100%;height: 80%;">
+      <iframe src="http://think.xiongxiao.me/htmlExample/"></iframe>
+    </div>
+  </div>
+  <div id="footer"></div>
+  <!-- Begin scripts -->
+    <script>const { ipcRenderer }= require('electron');   </script>
+
+
+    <script type="text/javascript">        
+      ipcRenderer.send('home', "index");
+      // document.write(xxfooter.import.body.innerHTML);
+      let header = document.querySelector("#header")
+      let footer = document.querySelector("#footer")
+      header.append(xxheader.import.body)
+      footer.append(xxfooter.import.body)
+    </script>
+    <script src="./scripts/main.min.js" charset="utf-8"></script>
+  <!-- End Scripts -->
+
+    <!-- inject:js -->
+    <!-- endinject -->
+
+</body>
+
+</html>

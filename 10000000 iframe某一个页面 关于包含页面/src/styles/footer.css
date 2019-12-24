@@ -1,0 +1,15 @@
+#footer-upload-images{
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100px;
+    background-color: aqua;
+    background: #58676D url(../images/upload-bg.jpg.webp?dc8d) center/cover no-repeat
+}
+
+#image-upload{
+    text-align: center;
+    color: white;
+    height: 100px;
+}

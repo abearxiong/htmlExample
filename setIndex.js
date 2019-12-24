@@ -29,6 +29,7 @@ let html =`
 <html>
     <head>
         <title>我的例子的列表</title>
+        <meta charset="utf-8">
         <style>
         .example-list{
             display:block;

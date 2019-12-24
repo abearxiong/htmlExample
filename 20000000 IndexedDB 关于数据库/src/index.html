@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+
+<!-- Begin styles  -->
+
+  <link rel="stylesheet" href="./styles/main.min.css" type="text/css">
+
+<!-- End styles  -->
+
+  <!-- inject:css -->
+  <!-- endinject -->
+
+  <title>例子</title>
+</head>
+
+<body>
+  <div id="develop">
+      哈哈哈哈
+  </div>
+
+  <!-- Begin scripts -->
+
+  
+    <script src="./scripts/main.min.js" charset="utf-8"></script>
+  <!-- End Scripts -->
+
+    <!-- inject:js -->
+    <!-- endinject -->
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+    <script>
+     //
+     // Declare Database
+     //
+     var db = new Dexie("FriendDatabase");
+     db.version(1).stores({
+       friends: "++id,name,age"
+     });
+  
+     //
+     // Manipulate and Query Database
+     //
+     db.friends.add({name: "Josephine", age: 21}).then(function() {
+         return db.friends.where("age").below(25).toArray();
+     }).then(function (youngFriends) {
+         alert ("My young friends: " + JSON.stringify(youngFriends));
+     }).catch(function (e) {
+         alert ("Error: " + (e.stack || e));
+     });
+    </script>
+</body>
+
+</html>
