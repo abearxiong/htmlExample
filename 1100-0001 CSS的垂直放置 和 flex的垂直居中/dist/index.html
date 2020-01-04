@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+<!-- Begin styles  -->
+  <link rel="stylesheet" href="./styles/main.min.css" type="text/css">
+<!-- End styles  -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <title>例子</title>
+</head>
+<style>
+#develop{
+  width: 80%;
+  margin: auto;
+}
+.remeber1{
+  font-size:x-large;
+  color: #F4A720;
+}
+.remeber1::before{
+  content: "大重点-";
+  color: red;
+}
+.remeber2{
+  font-size:large;
+  color: #EF8C12;
+}
+.remeber2::before{
+  content: "小重点-";
+  color: red;
+}
+li{
+  list-style: decimal;
+  font-size: 10px;
+}
+.c0{
+  height: 150px;
+  line-height: 150px;
+  width: 300px;
+  text-align: center;
+  border: 1px solid #ff0000;
+}
+.c1{
+  width: 150px;
+  background-color: #00ff00;
+  padding: 40px 75px 40px 75px;
+}
+.c2{
+  width: 300px;
+  height: 150px;
+  display: table
+}
+.c3{
+  vertical-align:middle; 
+  display:table-cell; 
+  background:#000; 
+  width:400px; 
+  color: red;
+  text-align: center;
+}
+.c4{
+  width: 300px;
+  height: 150px;
+  background-color: #0000ff;
+}
+.c5{
+  width: 150px;
+  /* height: 75px; */
+  background-color: #ffff00;
+  position: relative;
+  top: 50%;
+  /* margin:auto和left:.25都可以实现水平居中*/
+  /* margin: auto; */
+  left: 20%;
+}
+.c6{
+  width: 300px;
+  height: 150px;
+  background-color: #ff00ff;
+  position: absolute;
+}
+.c7{
+  width: 150px;
+  height: 75px;
+  background-color: #00ffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+.c8{
+  width: 300px;
+  height: 150px;
+  background-color: #c0c0c0;
+}
+.c9{
+  width: 150px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  color: red;
+  background-color: #000000;
+  transform: translate(-50%,-50%); /* 50%为自身尺寸的一半 */
+}
+.c10{
+  width: 300px;
+  height: 150px;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.c11{
+  width: 150px;
+  height: 75px;
+  background-color: #f0f0f0;
+}
+</style>
+<body>
+  <div id="develop">
+      <h3>内容的垂直居中</h3>
+      <details>
+        <summary>使用css的样式</summary>
+        <h4 class="rember1">1. 文字的垂直居中,在段落中：行高(line-height和文本居中text-align)</h4>
+          <p class="c0">
+            内容垂直并居中
+          </p>
+          <pre>
+            .c0{
+              height: 150px;
+              line-height: 150px;
+              width: 300px;
+              text-align: center;
+              border: 1px solid #ff0000;
+            }
+          </pre>
+        <h4 class="rember1">2. 文字的垂直居中,在段落中：内距（padding)</h4>
+        <p class="c1">
+          内容的垂直并居中
+        </p>
+        <pre>
+        .c1{
+          width: 150px;
+          background-color: #00ff00;
+          padding: 40px 75px 40px 75px;
+        }
+        </pre>
+        <p>
+          撑出内容
+        </p>
+        <h4 class="remeber2">3. div和文本垂直居中，模拟表格，外层display:table；内层vertial-align:middle和text-align:center合display:table-cell</h4>
+        <div class="c2">
+          <div class="c3">
+            内容垂直并居中
+          </div>
+        </div>
+        <pre>
+          .c2{
+            width: 300px;
+            height: 150px;
+            display: table
+          }
+          .c3{
+            vertical-align:middle; 
+            display:table-cell; 
+            background:#000; 
+            width:400px; 
+            color: red;
+            text-align: center;
+          }
+        </pre>
+        <p>注意：低版本ie对高度理解会有错误（未验证），使用ie11，edge，google，firefox是没问题的。</p>
+        <p class="remeber1"><b>对于vertial-align:middle是垂直居中，是处于inline的情况下才会成立，因此img是可以。</b></p>
+        <h4>4. div和文本垂直居中定位法</h4>
+        <div class="c4">
+          <div class="c5">
+            内容垂直并居中
+          </div>
+        </div>
+        <pre>
+          .c4{
+            width: 300px;
+            height: 150px;
+            background-color: #0000ff;
+          }
+          .c5{
+            width: 150px;
+            /* height: 75px; */
+            background-color: #ffff00;
+            position: relative;
+            top: 50%;
+            /* margin:auto和left:.25都可以实现水平居中*/
+            /* margin: auto; */
+            left: 25%;
+          }
+        </pre>
+        <p>使用top,left要考虑子div的<b>长度和宽度</b>，margin具有特异性，在top,right,bottom,left都为0的情况下，auto会自动垂直居中</p>
+        <p><i>长和宽分别的上层的元素的一半。top:25%;left:25%;计算方式：2x+y=z;z为总的长度，y为子层的长度</i></p>
+        <p>注意：position的absolute和relative，区别是absolute是脱离文档流，而relative还存在。</p>
+        <h6 class="remeber1">特别是absolute,父层也需要有absolute定位，否则会按照最上层的某一个absolute定位，同时如果是百分比，那么不是整个文档的长度，而是absolute的长度</h6>
+        <ul>
+          　　<li>如果没有TRBL(top、right、bottom、left)，以父级的左上角，在没有父级的时候，他是参照浏览器左上角,如果在没有父级元素的情况下，存在文本，则以它前面的最后一个文字的右上角为原点进行定位但是不断开文字，覆盖于上方。</li>
+　　          <li>如果设定TRBL，并且父级没有设定position属性，那么当前的absolute则以浏览器左上角为原始点进行定位，位置将由TRBL决定。</li>
+　　          <li>如果设定TRBL，并且父级设定position属性(无论是absolute还是relative)，则以父级的左上角为原点进行定位，位置由 TRBL决定。即使父级有Padding属性，对其也不起作用，说简单点就是：它只坚持一点，就以父级左上角为原点进行定位，父级的padding对其根 本没有影响。</li>
+        </ul>
+      </details>
+      <details open>
+        <summary>
+          关于margin和transform的垂直居中的使用
+        </summary>
+        <h4 class="remeber1">5. margin:auto法</h4>
+        <div class="c6">
+          <div class="c7">
+            内容垂直并居中
+          </div>
+        </div>
+        <pre>
+          .c6{
+            width: 300px;
+            height: 150px;
+            background-color: #ff00ff;
+            position: absolute;
+          }
+          .c7{
+            width: 150px;
+            height: 75px;
+            background-color: #00ffff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+          }
+        </pre>
+        <p>注意1. 必须都是绝对定位，absolute,如果是relative，只能是水平居中。第二absolute必须把对应的top,right,bottom,left，定为0</p>
+        <h4 class="remeber1">6. transform定位</h4>
+        <div class="c8">
+          <div class="c9">
+            内容垂直并居中
+          </div>
+        </div>
+        <pre>
+          .c8{
+            width: 300px;
+            height: 150px;
+            background-color: #c0c0c0;
+          }
+          .c9{
+            width: 150px;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            color: red;
+            background-color: #000000;
+            transform: translate(-50%,-50%); /* 50%为自身尺寸的一半 */
+          }
+        </pre>
+        <p>transform: translate(-50%,-50%)是相对自身的长度进行偏移</p>
+      </details>
+      <details open>
+        <summary>flex的定位方式</summary>
+        <h4 class="remeber1">7. 变通通过flex进行垂直居中</h4>
+        <div class="c10">
+          <div class="c11">
+            内容的垂直居中
+          </div>
+        </div>
+        <pre>
+          .c10{
+            width: 300px;
+            height: 150px;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .c11{
+            width: 150px;
+            height: 75px;
+            background-color: #f0f0f0;
+          }
+        </pre>
+        <p>对于flex的单个元素，使用justify-content和aligin-items进行垂直和水平居中</p>
+      </details>
+  </div>
+    <!-- Begin scripts -->
+      <script src="./scripts/main.min.js" charset="utf-8"></script>
+    <!-- End Scripts -->
+    <!-- inject:js -->
+    <!-- endinject -->
+  <script>
+  </script>
+</body>
+</html>

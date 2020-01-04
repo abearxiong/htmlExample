@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/abearxiong/htmlExample#readme",
   "dependencies": {
-    "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
     "@babel/register": "^7.4.4",
     "babel-preset-env": "^1.7.0",
