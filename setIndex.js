@@ -7,7 +7,7 @@ let getFiles = fs.readdirSync(filesPath)
 getFiles = getFiles.filter(item=>{
     if(item.startsWith("."))return false
     else if(item === "node_modules")return false
-    else if(item.startsWith("000000")){
+    else if(item.startsWith("0000-00")){
         console.log(item, "配置文件,不要")
         return false
     }
