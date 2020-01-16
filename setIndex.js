@@ -1,9 +1,9 @@
 // 获取除开node_modules的文件列表
 import fs from "fs";
-let filesPath = ".";
+let currentPath = ".";
 
-let getNeedFiles = [];
-let getFiles = fs.readdirSync(filesPath);
+let getNeedTableOfContents = [];
+let getFiles = fs.readdirSync(currentPath);
 getFiles = getFiles.filter(item => {
   if (item.startsWith(".")) return false;
   else if (item === "node_modules") return false;
@@ -16,12 +16,12 @@ getFiles = getFiles.filter(item => {
 getFiles.forEach(item => {
   let stats = fs.statSync(item);
   if (stats.isDirectory()) {
-    getNeedFiles.push(item);
+    getNeedTableOfContents.push(item);
   }
 });
-console.log("获取的列表", getNeedFiles);
+console.log("获取的列表", getNeedTableOfContents);
 
-let writeUrl = getNeedFiles.map(item => {
+let writeUrl = getNeedTableOfContents.map(item => {
   // return `<a class="example-list" target="__blank" href="./${item}/dist/index.html">${item}</a>`;
   return `<a class="example-list" target="_blank" href="./${item}/dist/index.html">${item}</a>`;
 });

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta charset="utf-8" />
+    <!-- Begin styles  -->
+    <link rel="stylesheet" href="./styles/main.min.css" type="text/css" />
+    <!-- End styles  -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <title>例子</title>
+  </head>
+  <body>
+    <div id="develop">
+      <article>
+        <h1>
+          这是关于把显示的结果所有的源码通过axois进行优化的显示的介绍
+        </h1>
+        <h2>基本描述</h2>
+        <p>所有的源码是通过gulp进行打包pip进一个main.min.js或者main.min.css当中，优化了写代码的过程，
+          而且同步更新，很方便。根据模板来写自己想要的样式的结果。</p>
+        <p>所有的样式和功能可以通过访问具体的路径获取得到，也可以通过访问到具体的路径查看到源码，
+          但是浏览器的显示不友好，对多个文件的分类后，会出现不能在一个页面当中显示出来，所以需要优化</p>
+        <h2>解决看源码的方案</h2>
+        <p>所访问的那个目录的上层，dist上面，放一个code.html，里面包含了通过nodejs执行命令获取得到的源码。</p>
+        <p>非直接读取了文件的内容，而是通过axios异步获取内容的方式来获取内容。在研究了prismjs和hightlightjs的代码高亮
+          的效果后，还是不如web的ide，开源ace显示的效果好。而且ace还可以自己编辑复制了出来，还不错。</p>
+      </article>
+    </div>
+    <!-- Begin scripts -->
+    <script src="./scripts/main.min.js" charset="utf-8"></script>
+    <!-- End Scripts -->
+    <!-- inject:js -->
+    <!-- endinject -->
+    <script></script>
+  </body>
+</html>

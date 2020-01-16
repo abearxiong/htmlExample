@@ -13,6 +13,9 @@
     /* #ace-edit-content{
         width: 100% !important;
     } */
+    /*
+    中间线的去掉
+    */
     .ace_print-margin{
         /* left: -1px; !important; */
         width: 0px !important;
@@ -34,11 +37,16 @@
             list-style-type: disc;
         }
     </div>
+    <div class="editor" id="editor-test.html.axios">
+    </div>
     <script src="https://cdn.bootcss.com/ace/1.4.6/ace.js"></script>
     <script src="https://cdn.bootcss.com/ace/1.4.6/theme-chrome.js"></script>
     <script src="https://cdn.bootcss.com/ace/1.4.6/mode-javascript.js"></script>
     <script src="https://cdn.bootcss.com/ace/1.4.6/mode-html.js"></script>
     <script src="https://cdn.bootcss.com/ace/1.4.6/mode-css.js"></script>
+
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <script>
      var editor1 = ace.edit("editor-test.javascript");
      editor1.setTheme("ace/theme/chrome");
@@ -61,6 +69,15 @@
     
 </body>
 </html>`)
+     </script>
+
+     <script>
+          var editor4 = ace.edit("editor-test.html.axios");
+          editor4.setTheme("ace/theme/chrome");
+          editor4.session.setMode("ace/mode/html");
+          axios.get('./ace.html').then( res => {
+            editor4.setValue(res.data)
+          })
      </script>
 </body>
 </html>
