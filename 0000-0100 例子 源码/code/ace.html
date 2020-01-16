@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ace测试</title>
+    <style>
+    .editor{
+        width: 80%; 
+        height: 500px;
+    }
+    /* #ace-edit-content{
+        width: 100% !important;
+    } */
+    .ace_print-margin{
+        /* left: -1px; !important; */
+        width: 0px !important;
+    }
+    </style>
+</head>
+<body>
+    <div class="editor" id="editor-test.javascript">
+        var a = [1, 2, 3];
+        a.map(item => {
+            console.log("index content", item);
+            return item;
+        })
+    </div>
+    <div class="editor" id="editor-test.html">
+    </div>
+    <div class="editor" id="editor-test.css">
+        li {
+            list-style-type: disc;
+        }
+    </div>
+    <script src="https://cdn.bootcss.com/ace/1.4.6/ace.js"></script>
+    <script src="https://cdn.bootcss.com/ace/1.4.6/theme-chrome.js"></script>
+    <script src="https://cdn.bootcss.com/ace/1.4.6/mode-javascript.js"></script>
+    <script src="https://cdn.bootcss.com/ace/1.4.6/mode-html.js"></script>
+    <script src="https://cdn.bootcss.com/ace/1.4.6/mode-css.js"></script>
+    <script>
+     var editor1 = ace.edit("editor-test.javascript");
+     editor1.setTheme("ace/theme/chrome");
+     editor1.session.setMode("ace/mode/javascript");
+     var editor2 = ace.edit("editor-test.html");
+     editor2.setTheme("ace/theme/chrome");
+     editor2.session.setMode("ace/mode/html");
+     var editor3 = ace.edit("editor-test.css");
+     editor3.setTheme("ace/theme/chrome");
+     editor3.session.setMode("ace/mode/css");
+     editor2.setValue(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>`)
+     </script>
+</body>
+</html>

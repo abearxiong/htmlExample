@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta charset="utf-8" />
+    <!-- Begin styles  -->
+    <link rel="stylesheet" href="./styles/main.min.css" type="text/css" />
+    <!-- End styles  -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <title>自动转的光圈</title>
+  </head>
+  <body>
+    <div id="develop">
+      <div class="loading"></div>
+      <div class="loading"></div>
+      <div class="loading"></div>
+    </div>
+    <div id="text">
+      <div class="introdece">
+        介绍-->文字渐变的样式
+        <pre>
+.introdece {
+  position: fixed;
+  left: 50px;
+  top: 50px;
+  width: 400px;
+  height: 800px;
+  white-space: normal;
+  /* background: 
+  linear-gradient(45deg,transparent,transparent 40% ,#2ecc71); */
+  background-image:
+  -webkit-linear-gradient(bottom,red,#fd8403,yellow); 
+  /* chrome中bacckground-clip:text 不支持，
+  但是-webkit-background-clib:text是可以的 */
+  /* firefox中可以直接使用background-clip:text来实现结果 */
+  /* background-clip:text;  */
+  -webkit-background-clip:text; 
+  /* 渐变填充 只有-webkit-text-fill-color */
+  -webkit-text-fill-color:transparent;
+  animation: animate-text 2s linear infinite;
+}
+@keyframes animate-text{
+  0%{
+      /* transform: rotate(0deg); */
+      filter: hue-rotate(0deg);
+  }
+  100%{
+      /* transform: rotate(360deg); */
+      filter: hue-rotate(360deg);
+  }
+}
+        </pre>
+        <pre>
+          类同于文字的渐变
+          光圈就是大圆叠小圆，光圈根据动画旋转即可
+        </pre>
+      </div>
+    </div>
+    <!-- Begin scripts -->
+    <script src="./scripts/main.min.js" charset="utf-8"></script>
+    <!-- End Scripts -->
+    <!-- inject:js -->
+    <!-- endinject -->
+    <script></script>
+  </body>
+</html>

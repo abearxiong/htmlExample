@@ -1,0 +1,30 @@
+.introdece {
+    position: fixed;
+    left: 50px;
+    top: 50px;
+    width: 430px;
+    height: 800px;
+    white-space: normal;
+    /* background: 
+    linear-gradient(45deg,transparent,transparent 40% ,#2ecc71); */
+    background-image:
+    -webkit-linear-gradient(bottom,red,#fd8403,yellow); 
+    /* chrome中bacckground-clip:text 不支持，
+    但是-webkit-background-clib:text是可以的 */
+    /* firefox中可以直接使用background-clip:text来实现结果 */
+    /* background-clip:text;  */
+    -webkit-background-clip:text; 
+    /* 渐变填充 只有-webkit-text-fill-color */
+    -webkit-text-fill-color:transparent;
+    animation: animate-text 2s linear infinite;
+}
+@keyframes animate-text{
+    0%{
+        /* transform: rotate(0deg); */
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        /* transform: rotate(360deg); */
+        filter: hue-rotate(360deg);
+    }
+}

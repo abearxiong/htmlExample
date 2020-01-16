@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>highlight测试</title>
+    <link
+      href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/default.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <pre>
+        <code class="language-css">
+    p { color: red }
+    body{ 
+        color: yellow;
+    }
+        </code>
+    </pre>
+    <pre>
+    <code class="javascript">
+    var i = 0;
+    console.log(i);
+    </code>
+</pre>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
