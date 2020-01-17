@@ -1,7 +1,9 @@
 // 获取除开node_modules的文件列表
 import fs from "fs";
+import path from "path";
 let currentPath = ".";
 
+// 1. read  file  current directory
 let getNeedTableOfContents = [];
 let getFiles = fs.readdirSync(currentPath);
 getFiles = getFiles.filter(item => {
@@ -20,33 +22,30 @@ getFiles.forEach(item => {
   }
 });
 console.log("获取的列表", getNeedTableOfContents);
-
-let writeUrl = getNeedTableOfContents.map(item => {
-  // return `<a class="example-list" target="__blank" href="./${item}/dist/index.html">${item}</a>`;
-  return `<a class="example-list" target="_blank" href="./${item}/dist/index.html">${item}</a>`;
+let myReadFiles = (readFiles, dir) => {
+  console.log("dir", dir, path.resolve(dir));
+  let getFiles = fs.readdirSync(path.resolve(dir), { withFileTypes: true });
+  getFiles.map(item => {
+    if (item.isDirectory()) {
+      myReadFiles(readFiles, path.resolve(dir) + "/" + item.name);
+    } else {
+      item.filePath = path.resolve(dir) + "/" + item.name;
+      readFiles.push(item);
+    }
+    return;
+  });
+};
+// 2. read directory src
+getNeedTableOfContents.map(item => {
+  let readFiles = [];
+  myReadFiles(readFiles, currentPath + "/" + item + "/src");
+  console.log("获取的所有的文件的内容是：");
+  let names = readFiles.map(item => {
+    // return item.name;
+    // return item.filePath.split("src")[1];
+    let htmlPath = "." + item.filePath.split("src")[1];
+    return htmlPath;
+  });
+  console.log(names);
 });
-writeUrl = writeUrl.join(" ");
-let html = `
-<!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>我的例子</title>
-    <style>
-    .example-list{
-        display:block;
-    }
-    body{
-        width: 80%;
-        margin: auto;
-    }
-    </style>
-</head>
-<body>
-    ${writeUrl}
-</body>
-</html>
-`;
-fs.writeFileSync("index.html", html);
+// fs.writeFileSync("index.html", html);
