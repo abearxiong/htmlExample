@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta charset="utf-8" />
+    <!-- Begin styles  -->
+    <link rel="stylesheet" href="./styles/main.min.css" type="text/css" />
+    <!-- End styles  -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <title>例子</title>
+  </head>
+  <style>
+  body{
+    width: 80%;
+    margin: auto;
+  }
+  </style>
+  <body>
+    <div id="develop">
+      <h1>文字的三种渐变</h1>
+      <details open>
+        <summary>1. 使用background-cli和text-fill-color的方法</summary>
+        <div class='gradient-text one'>
+          渐变的颜色
+        </div>
+        <h3>a. backgound-image属性</h3>
+        <p>
+          图片的背景，url(图片)，获取可以填充的界面
+        </p>
+        <p>
+          非继承，默认值none。背景占据元素的全部尺寸，包括内边距和边框，但不包括外边距。
+        </p>
+        <h3>
+          b. -webkit-background-clip: text
+        </h3>
+        <p>
+          规定背景的绘制区域，默认值border-box,继承性no，JavaScript语法object.style.backgroundClip="content-box"
+        </p>
+        <p>
+          border-box 背景被裁剪到边框盒|padding-box 背景被裁剪到内边距框 | content-box 背景被裁剪到内容框。
+        </p>
+        <p>
+          -webkit-background-clip: text支持chrome，是对区块内的文字进行裁剪。文字的背景为区块的背景，文字以外的区域都将被裁剪掉。
+        </p>
+        <h3>
+          c. -webkit-text-fill-color:transparent对文本的颜色设置透明
+        </h3>
+        <p>
+          设置文本的填充颜色，color: transparent也可。mdn不推荐使用
+        </p>
+        <h3>
+          c. -webkit-linear-gradient(bottom,red, #fd8403,yellow)线性变换颜色
+        </h3>
+        <p>
+          ilnear-gradient()函数是用户创建一个线性渐变的<em>图像</em>
+        </p>
+        <p>起点颜色，和终点颜色，创建的更多，渐变色更加的复杂</p>
+        <p>
+          第一个参数可以设置一个角度deg，设置线性渐变的一个过程。
+        </p>
+        <p>
+          也可以设置bottom等，方向渐变的路径，-webkit和普通的不一样，普通的有to bottom.
+        </p>
+        <pre>
+.gradient-text{
+  text-align: center;
+  text-indent: 30px;
+  line-height: 50px;
+  font-size: 40px;
+  font-weight: bolder;
+  position: relative;
+}
+.one{  
+  background-image:-webkit-linear-gradient(bottom,red,#fd8403,yellow); 
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color:transparent; 
+}       
+        </pre>
+      </details>
+      <details>
+        <summary>2. 使用mask-iamge</summary>
+        <div class='gradient-text two'  data-content="渐变的颜色">
+          渐变的颜色
+        </div>
+        <h3>
+          a. -webkit-mask-image
+        </h3>
+        <p>
+          图片蒙板的效果，对图片进行遮罩。
+        </p>
+        <h3>
+          b. two[data-content]:after{},可以设置参数，html的内容可以绑定到css样式当中。
+        </h3>
+        <pre>
+.two[data-content]::after {
+  content:attr(data-content);
+  display: block;
+  position: absolute;
+  color: yellow;
+  left: 0px;
+  top: 0px;
+  z-index: 2;
+  -webkit-mask-image: -webkit-gradient(linear,0 0,0 bottom, from(yellow), to(rgba(0,0,255,0)));
+}  
+        </pre>
+      </details>
+      <details>
+        <summary>3. svg linearGradient</summary>
+        <div class='gradient-text three'>
+          <svg viewBoxs="0 0 500 300" class="svgBox">
+            <defs>
+                <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="10" x2="0" y2="50">
+                    <stop  offset="0" style="stop-color:yellow"/>
+                    <stop  offset="0.5" style="stop-color:#fd8403"/>
+                    <stop  offset="1" style="stop-color:red"/>
+                </linearGradient>
+            </defs>
+            <text text-anchor="middle" class="gradient-text-three" x="110px" y="30%">渐变的颜色</text>
+        </svg>
+        </div>
+        <h3>
+          a. 使用canvas进行绘画 
+        </h3>
+        <xmp>
+<svg viewBoxs="0 0 500 300" class="svgBox">
+  <defs>
+      <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="10" x2="0" y2="50">
+          <stop  offset="0" style="stop-color:yellow"/>
+          <stop  offset="0.5" style="stop-color:#fd8403"/>
+          <stop  offset="1" style="stop-color:red"/>
+      </linearGradient>
+  </defs>
+  <text text-anchor="middle" class="gradient-text-three" x="110px" y="30%">渐变的颜色</text>
+</svg>
+        </xmp>
+      </details>
+      <div class='anim'>
+        content
+      </div>
+    </div>
+    <!-- Begin scripts -->
+    <script src="./scripts/main.min.js" charset="utf-8"></script>
+    <!-- End Scripts -->
+    <!-- inject:js -->
+    <!-- endinject -->
+    <script></script>
+  </body>
+</html>

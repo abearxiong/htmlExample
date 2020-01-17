@@ -1,0 +1,37 @@
+.gradient-text{
+    text-align: center;
+    text-indent: 30px;
+    line-height: 50px;
+    font-size: 40px;
+    font-weight: bolder;
+    position: relative;
+}
+.one{  
+    background-image:-webkit-linear-gradient(bottom,red,#fd8403,yellow); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color:transparent; 
+}
+.two {
+    text-align: left;
+    color: red;
+}
+.two[data-content]::after {
+    content:attr(data-content);
+    display: block;
+    position: absolute;
+    color: yellow;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+    -webkit-mask-image: -webkit-gradient(linear,0 0,0 bottom, from(yellow), to(rgba(0,0,255,0)));
+}
+.three {
+    fill:url(#SVGID_1_);
+    font-size:40px;
+    font-weight:bolder;
+}
+.anim {
+    width: 200px;
+    height: 200px;
+    background-color: rebeccapurple;
+}
