@@ -23,7 +23,9 @@ console.log("获取的列表", getNeedTableOfContents);
 
 let writeUrl = getNeedTableOfContents.map(item => {
   // return `<a class="example-list" target="__blank" href="./${item}/dist/index.html">${item}</a>`;
-  return `<a class="example-list" target="_blank" href="./${item}/dist/index.html">${item}</a>`;
+  return `<div>
+  <a class="example-list" target="_blank" href="./${item}/dist/index.html">${item}</a> | 
+  <a class="source-list" target="_blank" href="./${item}/index.html">源码</a></div>`;
 });
 writeUrl = writeUrl.join(" ");
 let html = `
@@ -36,7 +38,10 @@ let html = `
     <title>我的例子</title>
     <style>
     .example-list{
-        display:block;
+        color: yellow;
+    }
+    .source-list {
+      color: black;
     }
     body{
         width: 80%;

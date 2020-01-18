@@ -4,7 +4,8 @@
   "description": "我的html本地开发",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node ./setIndex.js"
+    "start": "babel-node ./setIndex.js",
+    "code":  "babel-node ./setCode.js"
   },
   "repository": {
     "type": "git",
