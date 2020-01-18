@@ -38,7 +38,7 @@ let html = `
     <title>我的例子</title>
     <style>
     .example-list{
-        color: yellow;
+        
     }
     .source-list {
       color: black;
