@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node ./setIndex.js",
-    "code": "babel-node ./setCode.js"
+    "code":  "babel-node ./setCode.js",
+    "build": "babel-node ./setIndex.js && babel-node ./setCode.js"
   },
   "repository": {
     "type": "git",
