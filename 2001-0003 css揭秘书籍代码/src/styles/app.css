@@ -1,0 +1,26 @@
+body{
+    /* background-color: aqua; */
+    /* background: #ffffff url(../images/bg.jpg) no-repeat right top; */
+    margin: 0px;
+}
+#app{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+#app::-webkit-scrollbar{
+    display: none;
+}
+#header{
+    /* width: 2000px; */
+    background-color: rgba(255, 255, 255, 0);
+    /* opacity: 0.4; */
+    
+}
+
+.linear-gradient-a {
+    height: 100vh;
+    background: linear-gradient(#f63, #58a);
+}
+.linear-gradient-b {
+    height: 100vh;
+    background: linear-gradient(#ff0000,#00ff00, #0000ff)
+}

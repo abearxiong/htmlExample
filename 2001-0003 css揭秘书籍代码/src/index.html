@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta charset="utf-8" />
+    <!-- Begin styles  -->
+    <link rel="stylesheet" href="./styles/main.min.css" type="text/css" />
+    <link rel="import" href="./components/footer.html" id="xxfooter" />
+    <link rel="import" href="./components/header.html" id="xxheader" />
+    <!-- End styles  -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <title>css揭秘</title>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="app">
+      <div class="linear-gradient-a">
+        <div class="linear-gradient-a1">2</div>
+      </div>
+      <div class="linear-gradient-b">
+        
+      </div>
+    </div>
+    <div id="footer"></div>
+    <!-- Begin scripts -->
+    <script type="text/javascript">
+      // document.write(xxfooter.import.body.innerHTML);
+      let header = document.querySelector("#header");
+      let footer = document.querySelector("#footer");
+      header.append(xxheader.import.body);
+      footer.append(xxfooter.import.body);
+    </script>
+    <script src="./scripts/main.min.js" charset="utf-8"></script>
+    <script src="./lib/index.js"></script>
+    <!-- End Scripts -->
+    <!-- inject:js -->
+    <!-- endinject -->
+  </body>
+</html>

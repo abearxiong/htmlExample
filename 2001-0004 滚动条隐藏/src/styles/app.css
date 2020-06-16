@@ -1,0 +1,37 @@
+body{
+    /* background-color: aqua; */
+    /* background: #ffffff url(../images/bg.jpg) no-repeat right top; */
+    margin: 0px;
+}
+#app{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+#header{
+    /* width: 2000px; */
+    background-color: rgba(255, 255, 255, 0);
+    /* opacity: 0.4; */
+    
+}
+
+/* firefox */
+html {
+    overflow: -moz-hidden-unscrollable;
+    height: 100%;
+}
+
+/* chrome */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    /* ie */
+    -ms-overflow-style: none;
+    height: 100%;
+	width: calc(100vw + 18px);
+	overflow: auto;
+}
+/* 
+滚动条： 
+https://juejin.im/post/5a6046dbf265da3e253c3534 
+*/
