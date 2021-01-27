@@ -78,17 +78,18 @@ getNeedTableOfContents.map((getNeedTableOfContent) => {
   });
   console.log(names);
   results = names.map((item) => {
+    const _path = "./src" + item + '/';
     if (item.startsWith("/components/")) {
       // console.log("components filename", path.basename(item));
-      components.push({ name: path.basename(item), path: "./src" + item });
+      components.push({ name: path.basename(item), path: _path });
     } else if (item.startsWith("/scripts")) {
-      scripts.push({ name: path.basename(item), path: "./src" + item });
+      scripts.push({ name: path.basename(item), path: _path });
     } else if (item.startsWith("/styles")) {
-      styles.push({ name: path.basename(item), path: "./src" + item });
+      styles.push({ name: path.basename(item), path: _path });
     } else if (item.startsWith("/images")) {
-      images.push({ name: path.basename(item), path: "./src" + item });
+      images.push({ name: path.basename(item), path: _path });
     } else {
-      others.push({ name: path.basename(item), path: "./src" + item });
+      others.push({ name: path.basename(item), path: _path });
     }
   });
   let htmlHead = `
