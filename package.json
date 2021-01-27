@@ -39,6 +39,6 @@
     "gulp-less": "^4.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
-    "jquery": "^3.5.1"
+    "jquery": "^3.5.0"
   }
 }
