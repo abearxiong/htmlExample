@@ -6,7 +6,8 @@
   "scripts": {
     "start": "babel-node ./setIndex.js",
     "code": "babel-node ./setCode.js",
-    "build": "babel-node ./setIndex.js && babel-node ./setCode.js"
+    "build": "babel-node ./setIndex.js && babel-node ./setCode.js",
+    "e": "e"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,12 @@
     "gulp-less": "^4.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
-    "jquery": "^3.5.0"
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {
+    "commander": "^7.0.0"
+  },
+  "bin": {
+    "he": "./bin/set.js"
   }
 }

@@ -1,23 +1,47 @@
 // 获取除开node_modules的文件列表
 import fs from "fs";
 import path from "path";
+import chalk from "chalk";
+
+// TODO: https://github.com/tj/commander.js
+import { program } from "commander";
+
+program.version("0.0.1");
+program
+  .option("-s, --small", "small pizza size")
+  .option("-u, --update-all", "update-all")
+  .option("-t, --test-type <type>", "test type");
+
+program.parse(process.argv);
+
+const options = program.opts();
+
 let currentPath = ".";
 
 // 1. read  file  current directory
 let getNeedTableOfContents = [];
 let getFiles = fs.readdirSync(currentPath);
-getFiles = getFiles.filter(item => {
+getFiles = getFiles.filter((item) => {
   if (item.startsWith(".")) return false;
   else if (item === "node_modules") return false;
   else if (item.startsWith("0000-00")) {
-    console.log(item, "配置文件,不要");
+    console.log(chalk.red("配置文件", item));
+    return false;
+  } else if (item.startsWith("src")) {
+    console.log(chalk.red("代码文件", item));
     return false;
   }
   return true;
 });
-getFiles.forEach(item => {
+getFiles.forEach((item) => {
   let stats = fs.statSync(item);
   if (stats.isDirectory()) {
+    // 如果是目录，则都是需要更新的
+    const _path = "./" + item + "/index.html";
+    const isAccess = fs.existsSync(_path);
+    if (isAccess && !options.updateAll) {
+      return;
+    }
     getNeedTableOfContents.push(item);
   }
 });
@@ -25,7 +49,7 @@ console.log("获取的列表", getNeedTableOfContents);
 let myReadFiles = (readFiles, dir) => {
   console.log("dir", dir, path.resolve(dir));
   let getFiles = fs.readdirSync(path.resolve(dir), { withFileTypes: true });
-  getFiles.map(item => {
+  getFiles.map((item) => {
     if (item.isDirectory()) {
       myReadFiles(readFiles, path.resolve(dir) + "/" + item.name);
     } else {
@@ -36,7 +60,7 @@ let myReadFiles = (readFiles, dir) => {
   });
 };
 // 2. read directory src
-getNeedTableOfContents.map(getNeedTableOfContent => {
+getNeedTableOfContents.map((getNeedTableOfContent) => {
   let readFiles = [];
   let components = [];
   let scripts = [];
@@ -46,14 +70,14 @@ getNeedTableOfContents.map(getNeedTableOfContent => {
   let results = "";
   myReadFiles(readFiles, currentPath + "/" + getNeedTableOfContent + "/src");
   console.log("获取的所有的文件的内容是：");
-  let names = readFiles.map(item => {
+  let names = readFiles.map((item) => {
     // return item.name;
     // return item.filePath.split("src")[1];
     let htmlPath = item.filePath.split("src")[1];
     return htmlPath;
   });
   console.log(names);
-  results = names.map(item => {
+  results = names.map((item) => {
     if (item.startsWith("/components/")) {
       // console.log("components filename", path.basename(item));
       components.push({ name: path.basename(item), path: "./src" + item });
@@ -143,31 +167,31 @@ getNeedTableOfContents.map(getNeedTableOfContent => {
     `;
   let htmlComponentsContent = components
     .map(
-      component =>
+      (component) =>
         `<li class="show-code" title="${component.path}">${component.name}</li>`
     )
     .join("");
   let htmlScriptsContent = scripts
     .map(
-      component =>
+      (component) =>
         `<li class="show-code" title="${component.path}">${component.name}</li>`
     )
     .join("");
   let htmlStylesContent = styles
     .map(
-      component =>
+      (component) =>
         `<li class="show-code" title="${component.path}">${component.name}</li>`
     )
     .join("");
   let htmlImagesContent = images
     .map(
-      component =>
+      (component) =>
         `<li class="show-code" title="${component.path}">${component.name}</li>`
     )
     .join("");
   let htmlOthersContent = others
     .map(
-      component =>
+      (component) =>
         `<li class="show-code" title="${component.path}">${component.name}</li>`
     )
     .join("");
