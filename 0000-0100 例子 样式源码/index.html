@@ -76,10 +76,10 @@
 <div class="list-tree">
 <a href="./dist/index.html" class="list-tree-title">0000-0100 例子 样式源码</a>
 
+<div class="list-tree-item"><a class="show-tree">scripts</a><ul class="directory"><li class="show-code" title="./src/scripts/app.js">app.js</li></ul></div>
+<div class="list-tree-item"><a class="show-tree">styles</a><ul class="directory" ><li class="show-code" title="./src/styles/app.css">app.css</li></ul></div>
 
-
-
-<div class="list-tree-item"><a class="show-tree">index</a><ul class="directory"><li class="show-code" title="./src//index.html">index.html</li><li class="show-code" title="./src/\scripts/app.js">app.js</li><li class="show-code" title="./src/\styles/app.css">app.css</li></ul></div>
+<div class="list-tree-item"><a class="show-tree">index</a><ul class="directory"><li class="show-code" title="./src/index.html">index.html</li></ul></div>
 </div>
 <div class="ace-content">
 <div class="editor" id="show-code-editor">
@@ -104,8 +104,9 @@
         }
       })
       showCode.forEach(item => {
-        item.onclick = ( e ) => {
-          let href = e.target.title
+        item.onclick = async ( e ) => {
+          let href = e.target.title;
+          console.log('请求链接', href);
           axios.get(href).then(res => {
             console.log("get code", res);
             if(href.endsWith("html")){

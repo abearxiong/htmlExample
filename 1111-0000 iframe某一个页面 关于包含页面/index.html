@@ -75,11 +75,11 @@
 <body>
 <div class="list-tree">
 <a href="./dist/index.html" class="list-tree-title">1111-0000 iframe某一个页面 关于包含页面</a>
-
-
-
-
-<div class="list-tree-item"><a class="show-tree">index</a><ul class="directory"><li class="show-code" title="./src/\components/footer.html">footer.html</li><li class="show-code" title="./src/\components/gitpush.html">gitpush.html</li><li class="show-code" title="./src/\components/header.html">header.html</li><li class="show-code" title="./src/\components/setting.html">setting.html</li><li class="show-code" title="./src/\images/bg.jpg">bg.jpg</li><li class="show-code" title="./src/\images/upload-bg.jpg.webp">upload-bg.jpg.webp</li><li class="show-code" title="./src/\images/小林.png">小林.png</li><li class="show-code" title="./src//index.html">index.html</li><li class="show-code" title="./src/\lib/footer.js">footer.js</li><li class="show-code" title="./src/\lib/home.js">home.js</li><li class="show-code" title="./src/\scripts/app.js">app.js</li><li class="show-code" title="./src/\scripts/footer.js">footer.js</li><li class="show-code" title="./src/\scripts/header.js">header.js</li><li class="show-code" title="./src/\scripts/paster.js">paster.js</li><li class="show-code" title="./src/\scripts/setting.js">setting.js</li><li class="show-code" title="./src/\styles/app.css">app.css</li><li class="show-code" title="./src/\styles/footer.css">footer.css</li><li class="show-code" title="./src/\styles/header.css">header.css</li><li class="show-code" title="./src/\styles/setting.css">setting.css</li></ul></div>
+<div class="list-tree-item"><a class="show-tree">component</a><ul class="directory" ><li class="show-code" title="./src/components/footer.html">footer.html</li><li class="show-code" title="./src/components/gitpush.html">gitpush.html</li><li class="show-code" title="./src/components/header.html">header.html</li><li class="show-code" title="./src/components/setting.html">setting.html</li></ul></div>
+<div class="list-tree-item"><a class="show-tree">scripts</a><ul class="directory"><li class="show-code" title="./src/scripts/app.js">app.js</li><li class="show-code" title="./src/scripts/footer.js">footer.js</li><li class="show-code" title="./src/scripts/header.js">header.js</li><li class="show-code" title="./src/scripts/paster.js">paster.js</li><li class="show-code" title="./src/scripts/setting.js">setting.js</li></ul></div>
+<div class="list-tree-item"><a class="show-tree">styles</a><ul class="directory" ><li class="show-code" title="./src/styles/app.css">app.css</li><li class="show-code" title="./src/styles/footer.css">footer.css</li><li class="show-code" title="./src/styles/header.css">header.css</li><li class="show-code" title="./src/styles/setting.css">setting.css</li></ul></div>
+<div class="list-tree-item"><a class="show-tree">images</a><ul class="directory"><li class="show-code" title="./src/images/bg.jpg">bg.jpg</li><li class="show-code" title="./src/images/upload-bg.jpg.webp">upload-bg.jpg.webp</li><li class="show-code" title="./src/images/小林.png">小林.png</li></ul></div>
+<div class="list-tree-item"><a class="show-tree">index</a><ul class="directory"><li class="show-code" title="./src/index.html">index.html</li><li class="show-code" title="./src/lib/footer.js">footer.js</li><li class="show-code" title="./src/lib/home.js">home.js</li></ul></div>
 </div>
 <div class="ace-content">
 <div class="editor" id="show-code-editor">
@@ -104,8 +104,9 @@
         }
       })
       showCode.forEach(item => {
-        item.onclick = ( e ) => {
-          let href = e.target.title
+        item.onclick = async ( e ) => {
+          let href = e.target.title;
+          console.log('请求链接', href);
           axios.get(href).then(res => {
             console.log("get code", res);
             if(href.endsWith("html")){

@@ -56,15 +56,15 @@ getNeedTableOfContents.map(getNeedTableOfContent => {
   results = names.map(item => {
     if (item.startsWith("/components/")) {
       // console.log("components filename", path.basename(item));
-      components.push({ name: path.basename(item), path: "./src/" + item });
+      components.push({ name: path.basename(item), path: "./src" + item });
     } else if (item.startsWith("/scripts")) {
-      scripts.push({ name: path.basename(item), path: "./src/" + item });
+      scripts.push({ name: path.basename(item), path: "./src" + item });
     } else if (item.startsWith("/styles")) {
-      styles.push({ name: path.basename(item), path: "./src/" + item });
+      styles.push({ name: path.basename(item), path: "./src" + item });
     } else if (item.startsWith("/images")) {
-      images.push({ name: path.basename(item), path: "./src/" + item });
+      images.push({ name: path.basename(item), path: "./src" + item });
     } else {
-      others.push({ name: path.basename(item), path: "./src/" + item });
+      others.push({ name: path.basename(item), path: "./src" + item });
     }
   });
   let htmlHead = `
@@ -217,8 +217,9 @@ ${htmlOthers}
         }
       })
       showCode.forEach(item => {
-        item.onclick = ( e ) => {
-          let href = e.target.title
+        item.onclick = async ( e ) => {
+          let href = e.target.title;
+          console.log('请求链接', href);
           axios.get(href).then(res => {
             console.log("get code", res);
             if(href.endsWith("html")){
