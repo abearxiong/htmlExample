@@ -148,3 +148,8 @@ const build = gulp.series(clean, gulp.parallel(scripts, styles, html, images),in
 export default build;
 
 ```
+
+
+## 本地开发问题
+
+之前使用`npm i -g serve` 来做查看服务，但是serve功能不全面，因此使用`live server`代替
